@@ -1,1 +1,1736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>For My BB 🥺❤️</title>
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Georgia, "Times New Roman", serif;
+    background:#fff6f8;
+    color:#512b35;
+    overflow-x:hidden;
+}
+
+button{
+    font-family:inherit;
+}
+
+section{
+    min-height:100vh;
+    padding:80px 20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+
+h1,h2,h3{
+    font-weight:700;
+}
+
+h2{
+    font-size:clamp(30px,7vw,52px);
+    color:#b73559;
+}
+
+p{
+    line-height:1.9;
+}
+
+
+/* =========================================================
+   FLOATING HEARTS
+========================================================= */
+
+.heart{
+    position:fixed;
+    bottom:-50px;
+    pointer-events:none;
+    z-index:999;
+    animation:heartFloat linear forwards;
+    opacity:.75;
+}
+
+@keyframes heartFloat{
+
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+
+    15%{
+        opacity:.8;
+    }
+
+    100%{
+        transform:translateY(-115vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+#intro{
+    background:
+    radial-gradient(circle at 20% 20%,#ffe4ec,transparent 30%),
+    radial-gradient(circle at 80% 80%,#ffdce6,transparent 30%),
+    linear-gradient(135deg,#fff8fa,#ffeaf0);
+}
+
+.intro-small{
+    font-size:14px;
+    letter-spacing:4px;
+    margin-bottom:25px;
+    color:#9b5267;
+}
+
+.main-title{
+    font-size:clamp(42px,11vw,85px);
+    line-height:1.05;
+    color:#b52f55;
+    animation:titleAppear 1.5s ease forwards;
+}
+
+@keyframes titleAppear{
+
+    from{
+        opacity:0;
+        transform:translateY(30px) scale(.95);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.intro-text{
+    max-width:650px;
+    margin-top:25px;
+    font-size:18px;
+}
+
+.main-btn{
+    margin-top:35px;
+    padding:16px 30px;
+    border:none;
+    border-radius:50px;
+    background:#b73559;
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+    box-shadow:0 12px 30px rgba(183,53,89,.25);
+    transition:.3s;
+}
+
+.main-btn:hover{
+    transform:translateY(-4px) scale(1.04);
+}
+
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+.music-button{
+    position:fixed;
+    right:18px;
+    top:18px;
+    z-index:5000;
+
+    border:none;
+    padding:12px 17px;
+    border-radius:50px;
+
+    background:rgba(183,53,89,.92);
+    color:white;
+
+    cursor:pointer;
+    box-shadow:0 6px 20px rgba(0,0,0,.15);
+}
+
+.music-button.playing{
+    animation:musicPulse 1.2s infinite;
+}
+
+@keyframes musicPulse{
+
+    50%{
+        transform:scale(1.05);
+    }
+}
+
+
+/* =========================================================
+   ENVELOPE
+========================================================= */
+
+#letter-section{
+    background:#fff;
+}
+
+.envelope-wrap{
+    margin:40px auto;
+    width:310px;
+    height:210px;
+    perspective:1000px;
+}
+
+.envelope{
+    position:relative;
+    width:100%;
+    height:100%;
+    cursor:pointer;
+}
+
+.envelope-body{
+    position:absolute;
+    inset:0;
+    background:#f2b6c7;
+    border-radius:10px;
+    box-shadow:0 20px 40px rgba(120,40,60,.18);
+}
+
+.envelope-flap{
+    position:absolute;
+    top:0;
+    left:0;
+
+    width:0;
+    height:0;
+
+    border-left:155px solid transparent;
+    border-right:155px solid transparent;
+    border-top:115px solid #dc8fa6;
+
+    transform-origin:top center;
+    transition:1s;
+    z-index:4;
+}
+
+.envelope-letter{
+    position:absolute;
+    width:88%;
+    height:85%;
+    left:6%;
+    top:8%;
+
+    background:white;
+    border-radius:8px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#b73559;
+    font-weight:bold;
+
+    transition:1s;
+    z-index:2;
+}
+
+.envelope.open .envelope-flap{
+    transform:rotateX(180deg);
+}
+
+.envelope.open .envelope-letter{
+    transform:translateY(-105px);
+}
+
+.envelope-hint{
+    color:#8e5967;
+    font-size:15px;
+}
+
+
+/* =========================================================
+   APOLOGY LETTER
+========================================================= */
+
+.apology-card{
+    max-width:760px;
+    margin-top:35px;
+
+    padding:40px 30px;
+
+    background:rgba(255,255,255,.85);
+    border-radius:28px;
+
+    box-shadow:0 20px 60px rgba(100,30,50,.10);
+
+    line-height:2;
+}
+
+.apology-card h3{
+    color:#b73559;
+    font-size:30px;
+    margin-bottom:25px;
+}
+
+.typing{
+    font-size:18px;
+    min-height:300px;
+}
+
+.cursor{
+    display:inline-block;
+    width:2px;
+    height:20px;
+    background:#b73559;
+    animation:blink .7s infinite;
+}
+
+@keyframes blink{
+    50%{opacity:0;}
+}
+
+
+/* =========================================================
+   MISTAKES
+========================================================= */
+
+#mistakes{
+    background:linear-gradient(135deg,#fff8fa,#ffeef3);
+}
+
+.mistake-intro{
+    margin-top:15px;
+    max-width:600px;
+}
+
+.mistake-grid{
+    width:min(950px,100%);
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:22px;
+    margin-top:40px;
+}
+
+.mistake-card{
+    padding:30px 22px;
+    background:white;
+    border-radius:24px;
+    box-shadow:0 12px 35px rgba(100,30,50,.08);
+    transition:.4s;
+}
+
+.mistake-card:hover{
+    transform:translateY(-8px);
+}
+
+.mistake-icon{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.mistake-card h3{
+    color:#b73559;
+    margin-bottom:12px;
+}
+
+
+/* =========================================================
+   MEMORIES
+========================================================= */
+
+#memories{
+    background:#fff;
+}
+
+.memory-subtitle{
+    margin-top:15px;
+}
+
+.gallery{
+    width:min(1000px,100%);
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+    margin-top:40px;
+}
+
+.memory{
+    position:relative;
+    height:330px;
+    overflow:hidden;
+    border-radius:24px;
+    background:#f5d6df;
+    box-shadow:0 15px 35px rgba(100,30,50,.12);
+}
+
+.memory img,
+.memory video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.memory-caption{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+
+    padding:35px 15px 15px;
+
+    color:white;
+    background:linear-gradient(transparent,rgba(0,0,0,.65));
+    font-size:15px;
+}
+
+@media(max-width:600px){
+
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+    .memory{
+        height:380px;
+    }
+}
+
+
+/* =========================================================
+   FOOD SECTION
+========================================================= */
+
+#food{
+    background:
+    radial-gradient(circle at 20% 30%,#ffe5ed,transparent 30%),
+    linear-gradient(135deg,#fff,#fff1f5);
+}
+
+.food-card{
+    width:min(680px,100%);
+    padding:40px 25px;
+
+    background:white;
+    border-radius:30px;
+
+    box-shadow:0 20px 60px rgba(100,30,50,.11);
+}
+
+.food-emoji{
+    font-size:75px;
+    animation:foodBounce 1.5s infinite;
+}
+
+@keyframes foodBounce{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+.food-card h2{
+    margin-top:15px;
+}
+
+.food-card p{
+    margin-top:20px;
+    font-size:17px;
+}
+
+.food-button{
+    margin:25px 8px 0;
+    padding:14px 22px;
+    border:none;
+    border-radius:50px;
+    background:#b73559;
+    color:white;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.food-response{
+    min-height:60px;
+    margin-top:25px;
+    font-size:18px;
+    color:#b73559;
+    font-weight:bold;
+}
+
+
+/* =========================================================
+   BOUQUET
+========================================================= */
+
+#flowers{
+    background:linear-gradient(135deg,#fff1f5,#ffe2ea);
+}
+
+.bouquet-area{
+    position:relative;
+    width:340px;
+    height:460px;
+    margin-top:20px;
+}
+
+.stem{
+    position:absolute;
+    bottom:125px;
+    left:50%;
+
+    width:10px;
+    height:220px;
+
+    background:#6f9e67;
+    border-radius:20px;
+
+    transform-origin:bottom center;
+}
+
+.stem:nth-child(1){
+    transform:rotate(-28deg);
+}
+
+.stem:nth-child(2){
+    transform:rotate(-14deg);
+}
+
+.stem:nth-child(3){
+    transform:rotate(0deg);
+}
+
+.stem:nth-child(4){
+    transform:rotate(14deg);
+}
+
+.stem:nth-child(5){
+    transform:rotate(28deg);
+}
+
+
+/* FLOWER HEAD */
+
+.flower-head{
+    position:absolute;
+    top:-32px;
+    left:-28px;
+
+    width:65px;
+    height:65px;
+
+    transform:scale(0);
+    animation:bloom 1.2s ease forwards;
+}
+
+.stem:nth-child(1) .flower-head{
+    animation-delay:.2s;
+}
+
+.stem:nth-child(2) .flower-head{
+    animation-delay:.45s;
+}
+
+.stem:nth-child(3) .flower-head{
+    animation-delay:.7s;
+}
+
+.stem:nth-child(4) .flower-head{
+    animation-delay:.95s;
+}
+
+.stem:nth-child(5) .flower-head{
+    animation-delay:1.2s;
+}
+
+@keyframes bloom{
+
+    0%{
+        transform:scale(0) rotate(-30deg);
+    }
+
+    70%{
+        transform:scale(1.12) rotate(8deg);
+    }
+
+    100%{
+        transform:scale(1) rotate(0);
+    }
+}
+
+.petal{
+    position:absolute;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    background:#ed7092;
+}
+
+.petal.one{
+    top:0;
+    left:16px;
+}
+
+.petal.two{
+    top:16px;
+    left:0;
+}
+
+.petal.three{
+    top:16px;
+    right:0;
+}
+
+.petal.four{
+    bottom:0;
+    left:16px;
+}
+
+.center{
+    position:absolute;
+    width:24px;
+    height:24px;
+    background:#ffd45c;
+    border-radius:50%;
+    left:21px;
+    top:21px;
+    z-index:5;
+}
+
+
+/* WRAPPER */
+
+.wrapper{
+    position:absolute;
+    bottom:25px;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:230px;
+    height:170px;
+
+    background:#d991a7;
+
+    clip-path:polygon(
+        50% 0,
+        100% 20%,
+        86% 100%,
+        14% 100%,
+        0 20%
+    );
+
+    box-shadow:0 15px 30px rgba(80,20,40,.18);
+}
+
+.wrapper-fold{
+    position:absolute;
+    bottom:25px;
+    left:50%;
+
+    width:230px;
+    height:120px;
+
+    transform:translateX(-50%);
+
+    background:rgba(255,255,255,.16);
+
+    clip-path:polygon(
+        50% 0,
+        100% 100%,
+        0 100%
+    );
+}
+
+.ribbon{
+    position:absolute;
+    bottom:35px;
+    left:50%;
+
+    width:28px;
+    height:145px;
+
+    transform:translateX(-50%);
+
+    background:#b83e61;
+    z-index:10;
+}
+
+.bow{
+    position:absolute;
+    bottom:150px;
+    left:50%;
+
+    width:100px;
+    height:50px;
+
+    transform:translateX(-50%);
+    z-index:20;
+}
+
+.bow-left,
+.bow-right{
+    position:absolute;
+    width:55px;
+    height:38px;
+    background:#b83e61;
+    top:0;
+}
+
+.bow-left{
+    left:0;
+    border-radius:50% 10% 50% 50%;
+    transform:rotate(20deg);
+}
+
+.bow-right{
+    right:0;
+    border-radius:10% 50% 50% 50%;
+    transform:rotate(-20deg);
+}
+
+.bow-center{
+    position:absolute;
+    width:28px;
+    height:28px;
+    background:#8f2947;
+    border-radius:50%;
+    left:36px;
+    top:8px;
+    z-index:3;
+}
+
+.flower-message{
+    max-width:600px;
+    font-size:18px;
+}
+
+
+/* =========================================================
+   BB SECTION
+========================================================= */
+
+#bb{
+    background:#fff;
+}
+
+.bb-card{
+    width:min(750px,100%);
+    padding:45px 25px;
+
+    border-radius:30px;
+
+    background:
+    linear-gradient(145deg,#fff8fa,#ffeef3);
+
+    box-shadow:0 20px 60px rgba(100,30,50,.1);
+}
+
+.cat{
+    font-size:75px;
+    animation:catFloat 2s ease-in-out infinite;
+}
+
+@keyframes catFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px) rotate(2deg);
+    }
+}
+
+.bb-card h2{
+    margin-top:15px;
+}
+
+.bb-card p{
+    margin-top:20px;
+    font-size:18px;
+}
+
+
+/* =========================================================
+   FINAL
+========================================================= */
+
+#final{
+    min-height:100vh;
+
+    background:
+    radial-gradient(circle at 20% 20%,rgba(255,255,255,.12),transparent 25%),
+    radial-gradient(circle at 80% 80%,rgba(255,255,255,.10),transparent 25%),
+    linear-gradient(135deg,#b73559,#76283f);
+
+    color:white;
+}
+
+.final-title{
+    color:white;
+    font-size:clamp(43px,10vw,82px);
+    line-height:1.05;
+}
+
+.final-message{
+    max-width:700px;
+    margin-top:35px;
+    font-size:19px;
+    line-height:2;
+}
+
+.final-heart{
+    font-size:65px;
+    margin-top:35px;
+    animation:finalBeat 1.2s infinite;
+}
+
+@keyframes finalBeat{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.18);
+    }
+}
+
+
+/* =========================================================
+   CONFETTI
+========================================================= */
+
+.confetti{
+    position:fixed;
+    top:-30px;
+    pointer-events:none;
+    z-index:99999;
+    animation:confettiFall 4s linear forwards;
+}
+
+@keyframes confettiFall{
+
+    to{
+        transform:translateY(110vh) rotate(720deg);
+        opacity:0;
+    }
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    padding:25px;
+    background:#76283f;
+    color:white;
+    text-align:center;
+    font-size:13px;
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =======================================================
+     MUSIC
+======================================================== -->
+
+<audio id="bgMusic" loop preload="auto">
+    <source src="Maan Meri Jaan - King.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-button" id="musicButton" onclick="toggleMusic()">
+    🎵 Play Music
+</button>
+
+
+
+<!-- =======================================================
+     INTRO
+======================================================== -->
+
+<section id="intro">
+
+    <p class="intro-small">
+        FOR MY BB ❤️
+    </p>
+
+    <h1 class="main-title">
+        MERI BB 🥺<br>
+        MAAF KRDO MUJHE ❤️
+    </h1>
+
+    <p class="intro-text">
+        Mujhe pata hai tum mujhse gussa ho...
+        bas please ye chhota sa surprise poora dekh lena. 🥺
+    </p>
+
+    <button class="main-btn"
+        onclick="goTo('letter-section')">
+        Open This For Me 💌
+    </button>
+
+</section>
+
+
+
+<!-- =======================================================
+     ENVELOPE + LETTER
+======================================================== -->
+
+<section id="letter-section">
+
+    <h2>BB Ke Naam Ek Letter 💌</h2>
+
+    <p class="envelope-hint">
+        Envelope pe click karo 🥺
+    </p>
+
+    <div class="envelope-wrap">
+
+        <div class="envelope" onclick="openEnvelope(this)">
+
+            <div class="envelope-body"></div>
+
+            <div class="envelope-letter">
+                For My BB ❤️
+            </div>
+
+            <div class="envelope-flap"></div>
+
+        </div>
+
+    </div>
+
+
+    <div class="apology-card">
+
+        <h3>Meri BB...</h3>
+
+        <div class="typing" id="typingText"></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     MISTAKES
+======================================================== -->
+
+<section id="mistakes">
+
+    <h2>Mujhe Pata Hai Meri Galti Thi 🥺</h2>
+
+    <p class="mistake-intro">
+        Main excuses nahi bana raha.
+        Jo galat hua, uske liye genuinely sorry hoon.
+    </p>
+
+
+    <div class="mistake-grid">
+
+        <div class="mistake-card">
+
+            <div class="mistake-icon">🥺</div>
+
+            <h3>Galti #1</h3>
+
+            <p>
+                Kal jo maine kaha/kiya,
+                woh mujhe nahi karna chahiye tha.
+            </p>
+
+        </div>
+
+
+        <div class="mistake-card">
+
+            <div class="mistake-icon">💔</div>
+
+            <h3>Galti #2</h3>
+
+            <p>
+                Mujhe tumhari feelings ko aur
+                achhe se samajhna chahiye tha.
+            </p>
+
+        </div>
+
+
+        <div class="mistake-card">
+
+            <div class="mistake-icon">😔</div>
+
+            <h3>Galti #3</h3>
+
+            <p>
+                Situation ko aur calmly handle
+                karna chahiye tha.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     MEMORIES
+======================================================== -->
+
+<section id="memories">
+
+    <h2>Hamari Choti Si Duniya ❤️</h2>
+
+    <p class="memory-subtitle">
+        Kuch moments jo mere liye special hain...
+    </p>
+
+
+    <div class="gallery">
+
+
+        <!-- PHOTO 1 -->
+
+        <div class="memory">
+
+            <img
+                src="2F3A6463-8E35-449A-AEA2-2F68253FDCA7.PNG"
+                alt="Our memory">
+
+            <div class="memory-caption">
+                One of my favourite memories ❤️
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 2 -->
+
+        <div class="memory">
+
+            <img
+                src="76FBFF50-5304-4F12-A15C-07CF4913B0A3.PNG"
+                alt="Our memory">
+
+            <div class="memory-caption">
+                This one will always be special 🥺
+            </div>
+
+        </div>
+
+
+
+        <!-- VIDEO -->
+
+        <div class="memory">
+
+            <video
+                controls
+                playsinline
+                preload="metadata">
+
+                <source
+                    src="8f68f36e-7f66-40c9-a743-12f8c261a664.MP4"
+                    type="video/mp4">
+
+            </video>
+
+            <div class="memory-caption">
+                A little memory of us ❤️
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 4 -->
+
+        <div class="memory">
+
+            <img
+                src="971E5A9D-8BC2-44BD-9817-DB3FB91567F2.PNG"
+                alt="Our memory">
+
+            <div class="memory-caption">
+                More memories, more reasons to smile ❤️
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     FOOD
+======================================================== -->
+
+<section id="food">
+
+    <div class="food-card">
+
+        <div class="food-emoji">
+            🍽️
+        </div>
+
+        <h2>
+            Aur Meri BB... Please Kuch Kha Lo 🥺
+        </h2>
+
+        <p>
+
+            Gussa mujhse ho jaana.
+            <br>
+
+            Naraz mujhse ho jaana.
+            <br>
+
+            Mujhe daant lena. 😭
+
+            <br><br>
+
+            <strong>
+                Lekin please khana mat chhodna.
+            </strong>
+
+            🥺❤️
+
+            <br><br>
+
+            Tumhari health important hai.
+            Isliye please apna khayal rakhna
+            aur kuch kha lena. ❤️
+
+        </p>
+
+
+        <button class="food-button"
+            onclick="foodYes()">
+            Theek Hai, Khaungi 🥺❤️
+        </button>
+
+
+        <button class="food-button"
+            onclick="foodNo()">
+            Nahi 😤
+        </button>
+
+
+        <div
+            class="food-response"
+            id="foodResponse">
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     ANIMATED FLOWER BOUQUET
+======================================================== -->
+
+<section id="flowers">
+
+    <h2>
+        Ye Flowers Tumhare Liye 🌸
+    </h2>
+
+    <div class="bouquet-area">
+
+
+        <!-- STEM 1 -->
+
+        <div class="stem">
+
+            <div class="flower-head">
+
+                <div class="petal one"></div>
+                <div class="petal two"></div>
+                <div class="petal three"></div>
+                <div class="petal four"></div>
+
+                <div class="center"></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- STEM 2 -->
+
+        <div class="stem">
+
+            <div class="flower-head">
+
+                <div class="petal one"></div>
+                <div class="petal two"></div>
+                <div class="petal three"></div>
+                <div class="petal four"></div>
+
+                <div class="center"></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- STEM 3 -->
+
+        <div class="stem">
+
+            <div class="flower-head">
+
+                <div class="petal one"></div>
+                <div class="petal two"></div>
+                <div class="petal three"></div>
+                <div class="petal four"></div>
+
+                <div class="center"></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- STEM 4 -->
+
+        <div class="stem">
+
+            <div class="flower-head">
+
+                <div class="petal one"></div>
+                <div class="petal two"></div>
+                <div class="petal three"></div>
+                <div class="petal four"></div>
+
+                <div class="center"></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- STEM 5 -->
+
+        <div class="stem">
+
+            <div class="flower-head">
+
+                <div class="petal one"></div>
+                <div class="petal two"></div>
+                <div class="petal three"></div>
+                <div class="petal four"></div>
+
+                <div class="center"></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- WRAPPER -->
+
+        <div class="wrapper"></div>
+
+        <div class="wrapper-fold"></div>
+
+        <div class="ribbon"></div>
+
+
+        <!-- BOW -->
+
+        <div class="bow">
+
+            <div class="bow-left"></div>
+
+            <div class="bow-right"></div>
+
+            <div class="bow-center"></div>
+
+        </div>
+
+    </div>
+
+
+    <p class="flower-message">
+
+        Real flowers screen se bahar nahi aa sakte 😭🌸
+
+        <br><br>
+
+        Isliye ye wala bouquet accept kar lo,
+        meri BB. 🥺❤️
+
+        <br><br>
+
+        <strong>
+            🌷🌷🌷 For You 🌷🌷🌷
+        </strong>
+
+    </p>
+
+</section>
+
+
+
+<!-- =======================================================
+     BB / BILLU BADMASH
+======================================================== -->
+
+<section id="bb">
+
+    <div class="bb-card">
+
+        <div class="cat">
+            🐱
+        </div>
+
+        <h2>
+            Meri BB ❤️
+        </h2>
+
+        <p>
+
+            Haan ji, wahi meri
+            <strong>Billu Badmash</strong> 😂🐱
+
+            <br><br>
+
+            Itni cute bhi hona aur itna gussa bhi karna...
+            ye kaunsi unfair deal hai? 😭
+
+            <br><br>
+
+            But jokes apart,
+            mujhe pata hai kal jo hua usse tum hurt hui ho.
+
+            <br><br>
+
+            Aur uske liye...
+
+            <br><br>
+
+            <strong>
+                I'm genuinely sorry, BB. 🥺❤️
+            </strong>
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     FINAL
+======================================================== -->
+
+<section id="final">
+
+    <h1 class="final-title">
+
+        MERI BB<br>
+        MAAF KRDO MUJHE 🥺❤️
+
+    </h1>
+
+
+    <p class="final-message">
+
+        Mujhe pata hai sirf "sorry" bolne se
+        sab kuch instantly normal nahi ho jaata.
+
+        <br><br>
+
+        Main tumse ye bhi expect nahi kar raha
+        ki tum turant gussa bhool jao.
+
+        <br><br>
+
+        Bas dil se sorry kehna tha.
+
+        <br><br>
+
+        Gussa ho toh gussa rehna,
+        naraz ho toh naraz rehna...
+
+        <br><br>
+
+        Bas please khud ka khayal rakhna,
+        kuch kha lena,
+        aur apna smile wapas mat khona. ❤️
+
+        <br><br>
+
+        <strong>
+            I'm really, really sorry, BB. 🥺❤️
+        </strong>
+
+    </p>
+
+
+    <div class="final-heart">
+        ❤️
+    </div>
+
+
+    <button class="main-btn"
+        onclick="celebrate()">
+
+        Bas Ek Smile Kar Do 🥺❤️
+
+    </button>
+
+</section>
+
+
+<footer>
+
+    Made with ❤️ for BB.
+
+</footer>
+
+
+
+<script>
+
+/* =========================================================
+   SMOOTH NAVIGATION
+========================================================= */
+
+function goTo(id){
+
+    document.getElementById(id)
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================================
+   ENVELOPE
+========================================================= */
+
+function openEnvelope(el){
+
+    el.classList.toggle("open");
+
+}
+
+
+/* =========================================================
+   TYPING APOLOGY
+========================================================= */
+
+const apologyText = `
+BB...
+
+Kal jo hua uske liye main genuinely sorry hoon.
+
+Mujhe pata hai meri baat ya meri actions se
+tum hurt hui ho, aur mujhe uska regret hai.
+
+Main excuses nahi banaunga aur na hi
+apni galti ko kisi aur cheez ke peeche chhupaunga.
+
+Mujhe bas itna kehna hai ki
+MERI BB, MAAF KRDO MUJHE. 🥺❤️
+
+Tumhari feelings mere liye important hain.
+
+Agar tum abhi gussa ho toh that's okay.
+Tumhe jo feel ho raha hai, feel kar sakti ho.
+
+Main bas chahta hoon ki tum apna khayal rakho,
+kuch kha lo aur please apne aap ko upset mat karo.
+
+I'm genuinely sorry, BB. ❤️
+`;
+
+let typingIndex = 0;
+
+function typeLetter(){
+
+    if(typingIndex < apologyText.length){
+
+        let char = apologyText.charAt(typingIndex);
+
+        if(char === "\n"){
+            document.getElementById("typingText")
+            .innerHTML += "<br>";
+        }
+        else{
+            document.getElementById("typingText")
+            .innerHTML += char;
+        }
+
+        typingIndex++;
+
+        setTimeout(typeLetter,28);
+
+    }
+    else{
+
+        document.getElementById("typingText")
+        .innerHTML += '<span class="cursor"></span>';
+
+    }
+
+}
+
+window.addEventListener("load",()=>{
+
+    setTimeout(typeLetter,1000);
+
+});
+
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+const music =
+document.getElementById("bgMusic");
+
+const musicButton =
+document.getElementById("musicButton");
+
+function toggleMusic(){
+
+    if(music.paused){
+
+        music.play();
+
+        musicButton.innerHTML =
+        "⏸️ Pause Music";
+
+        musicButton.classList.add("playing");
+
+    }
+    else{
+
+        music.pause();
+
+        musicButton.innerHTML =
+        "🎵 Play Music";
+
+        musicButton.classList.remove("playing");
+
+    }
+
+}
+
+
+/* =========================================================
+   FOOD BUTTONS
+========================================================= */
+
+function foodYes(){
+
+    document.getElementById("foodResponse").innerHTML =
+    "Yayyy 🥺❤️ Ab please sach mein kuch kha lena. 🍽️";
+
+}
+
+
+function foodNo(){
+
+    document.getElementById("foodResponse").innerHTML =
+    "BB pleaseee 😭❤️ Gussa mujhse rehna... bas khana kha lena. 🥺👉👈";
+
+}
+
+
+/* =========================================================
+   FLOATING HEARTS
+========================================================= */
+
+function createHeart(){
+
+    const heart =
+    document.createElement("div");
+
+    heart.className="heart";
+
+    const hearts=[
+        "❤️",
+        "💗",
+        "💕",
+        "💖",
+        "🌸",
+        "✨"
+    ];
+
+    heart.innerHTML =
+    hearts[Math.floor(Math.random()*hearts.length)];
+
+    heart.style.left =
+    Math.random()*100+"vw";
+
+    heart.style.fontSize =
+    (14+Math.random()*25)+"px";
+
+    heart.style.animationDuration =
+    (5+Math.random()*5)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+
+        heart.remove();
+
+    },10000);
+
+}
+
+setInterval(createHeart,900);
+
+
+/* =========================================================
+   FINAL CELEBRATION
+========================================================= */
+
+function celebrate(){
+
+    const symbols=[
+        "❤️",
+        "💗",
+        "💕",
+        "💖",
+        "🌸",
+        "✨",
+        "🥺"
+    ];
+
+    for(let i=0;i<55;i++){
+
+        const item =
+        document.createElement("div");
+
+        item.className="confetti";
+
+        item.innerHTML =
+        symbols[
+            Math.floor(
+                Math.random()*symbols.length
+            )
+        ];
+
+        item.style.left =
+        Math.random()*100+"vw";
+
+        item.style.fontSize =
+        (15+Math.random()*20)+"px";
+
+        item.style.animationDelay =
+        Math.random()*1.5+"s";
+
+        document.body.appendChild(item);
+
+        setTimeout(()=>{
+
+            item.remove();
+
+        },5000);
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL INTERACTION:
+   CLICK ANYWHERE ON FINAL SECTION = HEARTS
+========================================================= */
+
+document.getElementById("final")
+.addEventListener("click",(event)=>{
+
+    if(event.target.tagName === "BUTTON"){
+        return;
+    }
+
+    const heart =
+    document.createElement("div");
+
+    heart.innerHTML="❤️";
+
+    heart.style.position="fixed";
+    heart.style.left=event.clientX+"px";
+    heart.style.top=event.clientY+"px";
+    heart.style.fontSize="25px";
+    heart.style.pointerEvents="none";
+    heart.style.zIndex="99999";
+
+    document.body.appendChild(heart);
+
+    heart.animate(
+        [
+            {
+                transform:"translateY(0) scale(.5)",
+                opacity:0
+            },
+            {
+                transform:"translateY(-100px) scale(1.3)",
+                opacity:1
+            },
+            {
+                transform:"translateY(-180px) scale(.8)",
+                opacity:0
+            }
+        ],
+        {
+            duration:1800,
+            easing:"ease-out"
+        }
+    );
+
+    setTimeout(()=>{
+        heart.remove();
+    },1800);
+
+});
+
+</script>
+
+</body>
+</html>
